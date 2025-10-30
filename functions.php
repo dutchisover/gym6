@@ -14,11 +14,9 @@ function add_files()
 	// jQueryの読み込み
 	wp_enqueue_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', "", $cache, false);
 
-	// Swiper読み込み（CSS、JS）
-	// Swiper CSS
-	wp_enqueue_style('swiper-css', 'https://unpkg.com/swiper/swiper-bundle.min.css');
-	// Swiper JavaScript
-	wp_enqueue_script('swiper-js', 'https://unpkg.com/swiper/swiper-bundle.min.js', array(), false, true);
+	// Swiper（CSS、JS）
+	wp_enqueue_style('swiper', '//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css', array(), $cache);
+	wp_enqueue_script('swiper-js', '//cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), $cache, true);
 
 	// サイト共通（CSS、JS）
 	wp_enqueue_style('style', get_template_directory_uri() . '/css/style.css', "", $cache);
