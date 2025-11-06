@@ -23,3 +23,9 @@ function add_files()
 	wp_enqueue_script('main-script', get_template_directory_uri() . '/js/script.js', array('swiper-js'), $cache, true);
 }
 add_action('wp_enqueue_scripts', 'add_files');
+
+// アイキャッチ画像（投稿サムネイル）を有効化
+function gym_theme_setup() {
+    add_theme_support('post-thumbnails');
+}
+add_action('after_setup_theme', 'gym_theme_setup');
