@@ -1,0 +1,149 @@
+@use '../../foundation/settings/index' as *;
+
+// お知らせ
+.news_archive {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 800px;
+  width: 90%;
+}
+
+.news_link {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 40px;
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+
+  @include media() {
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 28px;
+    padding-left: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    display: block;
+    width: .4em;
+    height: .4em;
+    border: 1px solid;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(-45deg) translateY(-50%);
+  }
+}
+
+.news_date {
+  font-family: var(--fontEnglish);
+}
+
+
+// ページネーション
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 60px;
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  color: #055b5b;
+
+  &.current {
+    background-color: #055b5b;
+    color: #fff;
+  }
+
+  &.prev,
+  &.next {
+    position: relative;
+    overflow: hidden;
+    text-indent: -200%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: .5em;
+      height: .5em;
+      border: 2px solid;
+      border-top: 0;
+      border-left: 0;
+    }
+  }
+
+  &.next {
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  &.prev {
+    &::after {
+      transform: translate(-50%, -50%) rotate(135deg);
+    }
+  }
+}
+
+
+
+// 商品カタログ
+.catalog_inner {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 980px;
+  width: 90%;
+}
+
+.catalog_archive {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 24px 16px;
+  @include media() {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.catalog_thumb {
+  width: 100%;
+  aspect-ratio: 233 / 102;
+  object-fit: cover;
+
+  @include media() {
+    aspect-ratio: 160 / 102;
+  }
+}
+
+.catalog_name {
+  margin-top: 8px;
+  font-weight: 700;
+}
+
+.catalog_desc {
+  display: -webkit-box;
+  overflow: hidden; /* 内容がオーバーフローした場合に非表示にします */
+  -webkit-box-orient: vertical; /* ブロック方向の内容の流れを設定します */
+  margin-top: 8px;
+  color: var(--colorGray);
+  text-overflow: ellipsis;
+  font-size: 14px;
+  line-height: 1.5;
+
+  -webkit-line-clamp: 4; /* 表示する行数を4に制限します */
+  @include media() {
+    -webkit-line-clamp: 3; /* 表示する行数を4に制限します */
+  }
+}

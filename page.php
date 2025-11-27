@@ -1,6 +1,14 @@
 <?php get_header(); ?>
 
-<main class="main">
+<?php
+// 固定ページのスラッグを取得
+$slug = '';
+if (is_page()) {
+	$slug = get_post_field('post_name', get_post());
+}
+?>
+
+<main class="main <?php if ($slug) echo 'page-' . $slug; ?>">
 	<div class="inner">
 		<div class="content">
 			<?php
@@ -8,12 +16,15 @@
 				while (have_posts()) : the_post();
 					$title = get_the_title();
 					echo '<h1 class="section_title">' . $title . '</h1>';
+
 					if (has_post_thumbnail()) {
 						echo '<figure class="eyecatch">';
 						the_post_thumbnail('large', array('class' => 'eyecatch_image'));
 						echo '</figure>';
 					}
+
 					the_content();
+
 				endwhile;
 			endif;
 			?>
